@@ -18,7 +18,7 @@ RUN apt-get update && \
 #  - Yarn is the default package manager for the node component of a lucky
 #    browser app.
 #  - Mix is the default asset compiler.
-RUN npm install -g yarn mix
+RUN npm install -g mix
 
 # Install lucky cli
 WORKDIR /lucky/cli

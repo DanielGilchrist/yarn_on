@@ -6,16 +6,15 @@ set -o pipefail
 
 source script/helpers/text_helpers
 
-
 notice "Running System Check"
 ./script/system_check
 print_done
 
 notice "Installing node dependencies"
-yarn install --no-progress | indent
+npm install --no-fund --no-audit | indent
 
 notice "Compiling assets"
-yarn dev | indent
+npm run dev | indent
 
 print_done
 

@@ -6,10 +6,10 @@
     "modern-normalize": "^2.0.0"
   },
   "scripts": {
-    "heroku-postbuild": "yarn prod",
-    "dev": "yarn run mix",
-    "watch": "yarn run mix watch",
-    "prod": "yarn run mix --production"
+    "heroku-postbuild": "npm run prod",
+    "dev": "npx mix",
+    "watch": "npx mix watch",
+    "prod": "npx mix --production"
   },
   "devDependencies": {
     "@babel/compat-data": "^7.23.5",
