@@ -37,12 +37,6 @@ class Me::ShowPage < MainLayout
           end
         end
       end
-
-      # TODO: Implement or delete this dunno yet
-      #div class: "flex flex-col space-y-4" do
-      #  link "Create a New Post", to: Home::Index, class: "inline-flex items-center justify-center bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded-md transition-colors duration-200 w-full md:w-auto"
-      #  link "Account Settings", to: Home::Index, class: "inline-flex items-center justify-center border border-gray-300 bg-white hover:bg-gray-50 text-gray-700 font-medium py-2 px-4 rounded-md transition-colors duration-200 w-full md:w-auto"
-      #end
     end
   end
 end

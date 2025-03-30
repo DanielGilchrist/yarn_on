@@ -36,7 +36,9 @@ class Shared::Field(T) < BaseComponent
   needs label_text : String?
 
   def render(&)
-    label_for attribute, label_text
+    label_for attribute, class: "block text-gray-300 font-medium mb-2" do
+      text label_text || Wordsmith::Inflector.humanize(attribute.name.to_s)
+    end
 
     # You can add more default options here. For example:
     #

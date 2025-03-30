@@ -25,6 +25,10 @@ abstract class MainLayout
     end
   end
 
+  private def render_nav_item(text : String, action : BrowserAction.class)
+    link text, to: action, class: "text-indigo-100 hover:text-white transition-colors duration-200"
+  end
+
   private def render_nav
     nav class: "bg-indigo-700 text-white shadow-md" do
       div class: "container mx-auto py-4 px-4 sm:px-6" do
@@ -32,8 +36,8 @@ abstract class MainLayout
           link page_title, to: Home::Index, class: "text-2xl font-bold text-white hover:text-white"
 
           div class: "flex items-center space-x-6" do
-            link "Home", to: Home::Index, class: "text-indigo-100 hover:text-white transition-colors duration-200"
-            link "Profile", to: Me::Show, class: "text-indigo-100 hover:text-white transition-colors duration-200"
+            render_nav_item("Posts", Posts::Index)
+            render_nav_item("Profile", Me::Show)
 
             div class: "ml-6 pl-6 border-l border-indigo-500 flex items-center" do
               span current_user.email, class: "text-indigo-200 mr-3 hidden sm:inline"
