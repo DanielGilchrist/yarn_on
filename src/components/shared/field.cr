@@ -36,20 +36,22 @@ class Shared::Field(T) < BaseComponent
   needs label_text : String?
 
   def render(&)
-    label_for attribute, class: "block text-gray-300 font-medium mb-2" do
-      text label_text || Wordsmith::Inflector.humanize(attribute.name.to_s)
-    end
+    div class: "mb-4" do
+      label_for attribute, class: "block text-gray-300 font-medium mb-2" do
+        text label_text || Wordsmith::Inflector.humanize(attribute.name.to_s)
+      end
 
-    # You can add more default options here. For example:
-    #
-    #    tag_defaults field: attribute, class: "input"
-    #
-    # Will add the class "input" to the generated HTML.
-    tag_defaults field: attribute do |tag_builder|
-      yield tag_builder
-    end
+      # You can add more default options here. For example:
+      #
+      #    tag_defaults field: attribute, class: "input"
+      #
+      # Will add the class "input" to the generated HTML.
+      tag_defaults field: attribute do |tag_builder|
+        yield tag_builder
+      end
 
-    mount Shared::FieldErrors, attribute
+      mount Shared::FieldErrors, attribute
+    end
   end
 
   # Use a text_input by default
