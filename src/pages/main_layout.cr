@@ -25,6 +25,12 @@ abstract class MainLayout
     end
   end
 
+  private def render_markdown(text : String)
+    div class: "markdown-content" do
+      raw Markd.to_html(text, Markd::Options.new(smart: true, safe: true))
+    end
+  end
+
   private def render_nav_item(text : String, action : BrowserAction.class)
     link text, to: action, class: "text-indigo-100 hover:text-white transition-colors duration-200"
   end

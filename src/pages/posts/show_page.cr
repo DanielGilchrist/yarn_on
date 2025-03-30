@@ -30,9 +30,7 @@ class Posts::ShowPage < MainLayout
       end
 
       article class: "bg-gray-800 rounded-lg shadow-md p-8 text-gray-200 leading-relaxed" do
-        post.content.to_s.split("\n\n").each do |paragraph|
-          para paragraph, class: "mb-4"
-        end
+        render_markdown(post.content)
       end
 
       div class: "mt-12 bg-gray-800 rounded-lg shadow-md p-6 border border-gray-700" do

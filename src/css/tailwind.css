@@ -1,2 +1,37 @@
 @import "tailwindcss";
 
+.markdown-content {
+  h1 {
+    @apply text-2xl font-bold text-gray-100 mb-4 mt-8;
+  }
+  h2 {
+    @apply text-xl font-bold text-gray-100 mb-3 mt-6;
+  }
+  h3 {
+    @apply text-lg font-bold text-gray-100 mb-3 mt-5;
+  }
+  p {
+    @apply text-gray-300 mb-4;
+  }
+  ul, ol {
+    @apply text-gray-300 mb-4 ml-6;
+  }
+  ul {
+    @apply list-disc;
+  }
+  ol {
+    @apply list-decimal;
+  }
+  a {
+    @apply text-indigo-400 hover:text-indigo-300 underline;
+  }
+  blockquote {
+    @apply border-l-4 border-gray-600 pl-4 italic text-gray-400 mb-4;
+  }
+  code {
+    @apply bg-gray-700 px-1 py-0.5 rounded text-gray-300;
+  }
+  pre {
+    @apply bg-gray-700 p-4 rounded overflow-x-auto mb-4;
+  }
+}
