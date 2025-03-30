@@ -4,7 +4,7 @@ class BrowserClient < Lucky::BaseHTTPClient
   app AppServer.new
 
   def self.auth_exec(user : User, action : Lucky::Action.class, **params) : HTTP::Client::Response
-    self.auth_exec(user, action.route, params)
+    self.auth_exec(user, action.route, **params)
   end
 
   def self.auth_exec(user : User, route_helper : Lucky::RouteHelper, **params) : HTTP::Client::Response
