@@ -38,14 +38,9 @@ class SignIns::NewPage < AuthLayout
 
   private def sign_in_fields(op)
     div do
-      mount Shared::Field, attribute: op.email, label_text: "Email", &.email_input(
-        autofocus: "true",
-        replace_class: "w-full bg-gray-700 border border-gray-600 rounded-md px-4 py-3 text-white placeholder-gray-400 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
-      )
+      mount Shared::Field, attribute: op.email, label_text: "Email", &.email_input(autofocus: "true")
 
-      mount Shared::Field, attribute: op.password, label_text: "Password", &.password_input(
-        replace_class: "w-full bg-gray-700 border border-gray-600 rounded-md px-4 py-3 text-white placeholder-gray-400 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
-      )
+      mount Shared::Field, attribute: op.password, label_text: "Password", &.password_input
     end
   end
 end

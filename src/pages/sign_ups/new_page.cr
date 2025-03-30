@@ -35,22 +35,15 @@ class SignUps::NewPage < AuthLayout
 
   private def sign_up_fields(op)
     div class: "mb-6" do
-      mount Shared::Field, attribute: op.email, label_text: "Email", &.email_input(
-        autofocus: "true",
-        replace_class: "w-full bg-gray-700 border border-gray-600 rounded-md px-4 py-3 text-white placeholder-gray-400 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
-      )
+      mount Shared::Field, attribute: op.email, label_text: "Email", &.email_input(autofocus: "true")
     end
 
     div class: "mb-6" do
-      mount Shared::Field, attribute: op.password, label_text: "Password", &.password_input(
-        replace_class: "w-full bg-gray-700 border border-gray-600 rounded-md px-4 py-3 text-white placeholder-gray-400 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
-      )
+      mount Shared::Field, attribute: op.password, label_text: "Password", &.password_input
     end
 
     div class: "mb-6" do
-      mount Shared::Field, attribute: op.password_confirmation, label_text: "Confirm Password", &.password_input(
-        replace_class: "w-full bg-gray-700 border border-gray-600 rounded-md px-4 py-3 text-white placeholder-gray-400 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
-      )
+      mount Shared::Field, attribute: op.password_confirmation, label_text: "Confirm Password", &.password_input
     end
   end
 end

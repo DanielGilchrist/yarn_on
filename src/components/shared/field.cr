@@ -46,7 +46,10 @@ class Shared::Field(T) < BaseComponent
       #    tag_defaults field: attribute, class: "input"
       #
       # Will add the class "input" to the generated HTML.
-      tag_defaults field: attribute do |tag_builder|
+      tag_defaults(
+        class: "w-full bg-gray-700 border border-gray-600 rounded-md px-4 py-3 text-white placeholder-gray-400 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500",
+        field: attribute
+      ) do |tag_builder|
         yield tag_builder
       end
 

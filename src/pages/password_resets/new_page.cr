@@ -23,16 +23,19 @@ class PasswordResets::NewPage < AuthLayout
   private def render_password_reset_form(op)
     form_for PasswordResets::Create.with(@user_id), class: "space-y-6" do
       div class: "mb-6" do
-        mount Shared::Field, operation: operation, attribute: op.password, label_text: "Password", &.password_input(
-          autofocus: "true",
-          replace_class: "w-full bg-gray-700 border border-gray-600 rounded-md px-4 py-3 text-white placeholder-gray-400 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
-        )
+        mount Shared::Field,
+          operation: operation,
+          attribute: op.password,
+          label_text: "Password",
+          &.password_input(autofocus: "true")
       end
 
       div class: "mb-6" do
-        mount Shared::Field, operation: operation, attribute: op.password_confirmation, label_text: "Confirm Password", &.password_input(
-          replace_class: "w-full bg-gray-700 border border-gray-600 rounded-md px-4 py-3 text-white placeholder-gray-400 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
-        )
+        mount Shared::Field,
+              operation: operation,
+              attribute: op.password_confirmation,
+              label_text: "Confirm Password",
+              &.password_input
       end
 
       div class: "pt-2" do
