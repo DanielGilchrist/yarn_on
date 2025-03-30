@@ -3,7 +3,6 @@ abstract class MainLayout
 
   needs current_user : User
   abstract def content
-  abstract def page_title
 
   def page_title
     "YarnOn"
@@ -13,13 +12,12 @@ abstract class MainLayout
     html_doctype
     html lang: "en" do
       mount Shared::LayoutHead, page_title: page_title
-      body class: "bg-gray-100 min-h-screen" do
+      body class: "bg-gray-100 min-h-screen text-gray-800" do
         render_nav
 
-        div class: "container mx-auto p-4" do
+        div class: "container mx-auto py-8 px-4 sm:px-6" do
           mount Shared::FlashMessages, context.flash
-
-          div class: "bg-white p-6 rounded shadow mt-4" do
+          div class: "bg-white rounded-lg shadow-md overflow-hidden" do
             content
           end
         end
@@ -28,22 +26,23 @@ abstract class MainLayout
   end
 
   private def render_nav
-    nav class: "bg-indigo-600 text-white p-4 shadow" do
-      div class: "container mx-auto flex items-center justify-between" do
-        link page_title, to: Home::Index, class: "text-xl font-bold"
+    nav class: "bg-indigo-700 text-white shadow-md" do
+      div class: "container mx-auto py-4 px-4 sm:px-6" do
+        div class: "flex items-center justify-between" do
+          link page_title, to: Home::Index, class: "text-2xl font-bold text-white hover:text-white"
 
-        div class: "flex items-center gap-4" do
-          link "Home", to: Home::Index, class: "hover:text-indigo-200"
-          link "Profile", to: Me::Show, class: "hover:text-indigo-200"
+          div class: "flex items-center space-x-6" do
+            link "Home", to: Home::Index, class: "text-indigo-100 hover:text-white transition-colors duration-200"
+            link "Profile", to: Me::Show, class: "text-indigo-100 hover:text-white transition-colors duration-200"
 
-          div class: "ml-4 pl-4 border-l border-indigo-500 flex items-center" do
-            span current_user.email, class: "text-indigo-200 mr-2"
-            link "Sign out", to: SignIns::Delete, flow_id: "sign-out-button",
-              class: "bg-indigo-700 hover:bg-indigo-800 px-3 py-1 rounded"
+            div class: "ml-6 pl-6 border-l border-indigo-500 flex items-center" do
+              span current_user.email, class: "text-indigo-200 mr-3 hidden sm:inline"
+              link "Sign out", to: SignIns::Delete, flow_id: "sign-out-button",
+                class: "bg-indigo-800 hover:bg-indigo-900 px-4 py-2 rounded-md text-sm transition-colors duration-200"
+            end
           end
         end
       end
     end
   end
 end
-
