@@ -2,7 +2,7 @@ require "../spec_helper"
 
 describe "Authentication flow", tags: "flow" do
   it "works" do
-    flow = AuthenticationFlow.new("test@example.com")
+    flow = AuthenticationFlow.new("test@example.com", "Harry", "Potter")
 
     flow.sign_up "password"
     flow.should_be_signed_in

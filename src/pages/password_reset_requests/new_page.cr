@@ -19,6 +19,7 @@ class PasswordResetRequests::NewPage < AuthLayout
 
               div class: "pt-2" do
                 submit "Reset Password",
+                  flow_id: "request-password-reset-button",
                   class: "w-full bg-indigo-600 hover:bg-indigo-500 text-white font-medium py-3 px-4 rounded-md transition-colors duration-200"
               end
             end

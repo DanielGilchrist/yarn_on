@@ -1,11 +1,13 @@
 class ResetPasswordFlow < BaseFlow
   private getter user, authentication_flow
+
   delegate sign_in, sign_out, should_have_password_error, should_be_signed_in,
     to: authentication_flow
+
   delegate email, to: user
 
   def initialize(@user : User)
-    @authentication_flow = AuthenticationFlow.new(user.email)
+    @authentication_flow = AuthenticationFlow.new(user.email, user.first_name, user.last_name)
   end
 
   def request_password_reset

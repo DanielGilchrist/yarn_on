@@ -1,13 +1,15 @@
 class AuthenticationFlow < BaseFlow
-  private getter email
+  private getter email, first_name, last_name
 
-  def initialize(@email : String)
+  def initialize(@email : String, @first_name : String, @last_name : String)
   end
 
   def sign_up(password)
     visit SignUps::New
     fill_form SignUpUser,
       email: email,
+      first_name: first_name,
+      last_name: last_name,
       password: password,
       password_confirmation: password
     click "@sign-up-button"
@@ -31,7 +33,7 @@ class AuthenticationFlow < BaseFlow
   end
 
   def should_have_password_error
-    current_page.should have_element("body", text: "Password is wrong")
+    current_page.should have_element("body", text: "Sign in failed")
   end
 
   private def sign_out_button
