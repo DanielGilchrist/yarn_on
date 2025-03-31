@@ -1,9 +1,10 @@
 class SignUpUser < User::SaveOperation
-  param_key :user
-  # Change password validations in src/operations/mixins/password_validations.cr
   include PasswordValidations
 
-  permit_columns email
+  param_key :user
+
+  permit_columns first_name, last_name, email
+
   attribute password : String
   attribute password_confirmation : String
 

@@ -1,5 +1,6 @@
 class Posts::Show < BrowserAction
   get "/posts/:post_id" do
-    html ShowPage, post: PostQuery.find(post_id)
+    post = PostQuery.find(post_id)
+    html ShowPage, post: PostQuery.preload_author(post)
   end
 end

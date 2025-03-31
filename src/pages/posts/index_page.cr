@@ -28,12 +28,19 @@ class Posts::IndexPage < MainLayout
   private def render_post_card(post)
     div class: "bg-gray-800 rounded-lg shadow-lg border border-gray-700 overflow-hidden hover:border-indigo-500 transition-all duration-200" do
       link to: Posts::Show.with(post), class: "block p-6" do
-        div class: "text-sm text-gray-400 mb-2" do
-          text post.created_at.try(&.to_s("%B %d, %Y")) || "Draft"
+        div class: "flex justify-between items-center text-sm text-gray-400 mb-2" do
+          div class: "flex items-center" do
+            span class: "w-6 h-6 rounded-full bg-indigo-600 flex items-center justify-center text-white text-xs mr-2" do
+              text post.author.text_for_icon
+            end
+
+            span post.author.full_name
+          end
+
+          span post.created_at.try(&.to_s("%B %d, %Y")) || "Draft"
         end
 
         h2 post.title.to_s, class: "text-xl font-semibold text-white mb-3 hover:text-indigo-300 transition-colors duration-200"
-
         span "Read more →", class: "text-indigo-300 hover:text-indigo-200 text-sm font-medium inline-block mt-2"
       end
     end

@@ -39,6 +39,14 @@ class SignUps::NewPage < AuthLayout
     end
 
     div class: "mb-6" do
+      mount Shared::Field, attribute: op.first_name, label_text: "First Name", &.text_input
+    end
+
+    div class: "mb-6" do
+      mount Shared::Field, attribute: op.last_name, label_text: "Last Name", &.text_input
+    end
+
+    div class: "mb-6" do
       mount Shared::Field, attribute: op.password, label_text: "Password", &.password_input
     end
 
