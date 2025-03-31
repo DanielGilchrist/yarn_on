@@ -18,7 +18,7 @@ abstract class AuthLayout
     html lang: "en" do
       mount Shared::LayoutHead, page_title: page_title
 
-      body do
+      body class: "bg-gray-900 min-h-screen text-gray-100" do
         mount Shared::FlashMessages, context.flash
         content
       end
