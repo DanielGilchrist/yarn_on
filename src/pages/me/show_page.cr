@@ -39,11 +39,6 @@ class Me::ShowPage < MainLayout
           end
         end
       end
-
-      div class: "flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4" do
-        link "Change Password", to: PasswordResets::Edit.with(user_id: current_user.id),
-          class: "inline-flex justify-center items-center px-4 py-2 bg-indigo-600 hover:bg-indigo-500 text-white font-medium rounded-md transition-colors duration-200"
-      end
     end
   end
 end
