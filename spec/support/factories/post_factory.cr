@@ -1,4 +1,3 @@
-
 class PostFactory < Avram::Factory
   def initialize
     title "Test Title"

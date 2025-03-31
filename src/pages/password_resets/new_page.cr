@@ -26,16 +26,14 @@ class PasswordResets::NewPage < AuthLayout
         mount Shared::Field,
           operation: operation,
           attribute: op.password,
-          label_text: "Password",
-          &.password_input(autofocus: "true")
+          label_text: "Password", &.password_input(autofocus: "true")
       end
 
       div class: "mb-6" do
         mount Shared::Field,
-              operation: operation,
-              attribute: op.password_confirmation,
-              label_text: "Confirm Password",
-              &.password_input
+          operation: operation,
+          attribute: op.password_confirmation,
+          label_text: "Confirm Password", &.password_input
       end
 
       div class: "pt-2" do

@@ -2,6 +2,7 @@ abstract class MainLayout
   include Lucky::HTMLPage
 
   needs current_user : User
+
   abstract def content
 
   def page_title

@@ -18,8 +18,8 @@ class Shared::FlashMessages < BaseComponent
 
   private def render_flash(flash_type : FlashType, flash_message : String)
     div class: "#{flash_background_class(flash_type)} #{flash_text_class(flash_type)} px-4 py-3 rounded-md shadow-md mb-4 border #{flash_border_class(flash_type)}",
-        role: "alert",
-        flow_id: "flash" do
+      role: "alert",
+      flow_id: "flash" do
       div class: "flex items-center" do
         span flash_icon(flash_type), class: "mr-3"
         span flash_message, class: "font-medium"

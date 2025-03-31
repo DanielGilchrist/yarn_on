@@ -28,4 +28,3 @@ class Posts::NewPage < MainLayout
     end
   end
 end
-
