@@ -34,10 +34,6 @@ class Posts::IndexPage < MainLayout
 
         h2 post.title.to_s, class: "text-xl font-semibold text-white mb-3 hover:text-indigo-300 transition-colors duration-200"
 
-        para class: "text-gray-300 mb-4" do
-          text truncate_content(post.content.to_s)
-        end
-
         span "Read more →", class: "text-indigo-300 hover:text-indigo-200 text-sm font-medium inline-block mt-2"
       end
     end
@@ -48,14 +44,6 @@ class Posts::IndexPage < MainLayout
       h3 "No posts yet", class: "text-xl font-semibold text-white mb-4"
       para "Be the first to create a yarn and start the conversation!", class: "text-gray-300 mb-6"
       link "Create Your First Post", to: Posts::New, class: "px-6 py-3 bg-indigo-500 hover:bg-indigo-400 text-white font-medium rounded-md transition-colors duration-200 inline-block"
-    end
-  end
-
-  private def truncate_content(content : String, max_length : Int32 = 120)
-    if content.size > max_length
-      content[0...max_length] + "..."
-    else
-      content
     end
   end
 end
