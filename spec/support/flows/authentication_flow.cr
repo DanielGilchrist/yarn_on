@@ -33,7 +33,11 @@ class AuthenticationFlow < BaseFlow
   end
 
   def should_have_password_error
-    current_page.should have_element("body", text: "Sign in failed")
+    flash_button.should have_text("Sign in failed")
+  end
+
+  private def flash_button
+    el("@flash")
   end
 
   private def sign_out_button
