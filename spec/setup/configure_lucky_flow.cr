@@ -2,7 +2,8 @@
 # https://luckyframework.org/guides/testing/html-and-interactivity
 
 LuckyFlow.configure do |settings|
-  settings.stop_retrying_after = 1.second
+  settings.retry_delay = 100.milliseconds
+  settings.stop_retrying_after = 5.seconds
   settings.base_uri = Lucky::RouteHelper.settings.base_uri
 
   # LuckyFlow will install the chromedriver for you located in
