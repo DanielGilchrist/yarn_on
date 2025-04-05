@@ -6,23 +6,19 @@
     "modern-normalize": "^2.0.0"
   },
   "scripts": {
-    "heroku-postbuild": "npm run prod",
-    "dev": "npx mix",
-    "watch": "npx mix watch",
-    "prod": "npx mix --production"
+    "heroku-postbuild": "npm run build",
+    "build": "npx vite build",
+    "watch": "npx vite build --watch"
   },
   "devDependencies": {
     "@babel/compat-data": "^7.23.5",
     "@tailwindcss/oxide": "^4.0.17",
     "@tailwindcss/postcss": "^4.0.17",
-    "browser-sync": "^2.29.3",
-    "compression-webpack-plugin": "^10.0.0",
-    "laravel-mix": "^6.0.49",
     "lightningcss": "^1.29.3",
     "postcss": "^8.5.3",
-    "resolve-url-loader": "^5.0.0",
     "sass": "^1.69.5",
-    "sass-loader": "^13.3.2",
-    "tailwindcss": "^4.0.17"
+    "tailwindcss": "^4.0.17",
+    "vite": "^6.2.5",
+    "vite-plugin-lucky": "^0.2.0"
   }
 }

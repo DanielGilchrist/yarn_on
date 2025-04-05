@@ -4,15 +4,13 @@ class Shared::LayoutHead < BaseComponent
   def render
     head do
       utf8_charset
-      title "YarnOn"
-      css_link asset("css/tailwind.css")
-      css_link asset("css/app.css")
-      js_link asset("js/app.js"), defer: "true"
+      title page_title
+
+      vite_entry_tags "main.js", defer: "true"
+
       csrf_meta_tags
       responsive_meta_tag
 
-      # Development helper used with the `lucky watch` command.
-      # Reloads the browser when files are updated.
       live_reload_connect_tag if LuckyEnv.development?
     end
   end
