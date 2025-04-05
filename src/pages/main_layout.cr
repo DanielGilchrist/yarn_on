@@ -14,7 +14,7 @@ abstract class MainLayout
     html lang: "en" do
       mount Shared::LayoutHead, page_title: page_title
 
-      body class: "bg-gray-900 min-h-screen text-gray-100" do
+      body style: "display: none;", class: "bg-gray-900 min-h-screen text-gray-100" do
         render_nav
         div class: "container mx-auto py-8 px-4 sm:px-6" do
           mount Shared::FlashMessages, context.flash
