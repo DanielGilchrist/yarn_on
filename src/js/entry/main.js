@@ -4,6 +4,7 @@ import "vite/modulepreload-polyfill"
 import "@css/tailwind.css";
 import "@css/main.css"
 import "@css/app.scss";
+import "@js/app.js"
 
 // Add static assets to the manifest (optional)
 import.meta.glob([
