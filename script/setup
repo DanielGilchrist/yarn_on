@@ -14,7 +14,7 @@ notice "Installing node dependencies"
 npm install --no-fund --no-audit | indent
 
 notice "Compiling assets"
-npm run dev | indent
+npm run build | indent
 
 print_done
 

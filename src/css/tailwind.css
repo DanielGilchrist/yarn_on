@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+html {
+  display: block !important;
+}
+
 .markdown-content {
   h1 {
     @apply text-2xl font-bold text-gray-100 mb-4 mt-8;

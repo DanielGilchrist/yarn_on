@@ -15,9 +15,6 @@ dependencies:
   carbon:
     github: luckyframework/carbon
     version: ~> 0.6.0
-  carbon_sendgrid_adapter:
-    github: luckyframework/carbon_sendgrid_adapter
-    version: ~> 0.6.0
   lucky_env:
     github: luckyframework/lucky_env
     version: ~> 0.2.0
@@ -29,6 +26,8 @@ dependencies:
     version: '>= 1.0.1, < 2.0.0'
   markd:
     github: icyleaf/markd
+  lucky_vite:
+    github: wout/lucky_vite
 
 development_dependencies:
   lucky_flow:
