@@ -98,7 +98,7 @@ jobs:
         if: steps.node-cache.outputs.cache-hit != 'true'
         run: npm ci --no-progress
       - name: Compiling assets
-        run: npm run prod
+        run: npm run build
       - name: Build lucky_tasks
         run: crystal build tasks.cr -o ./lucky_tasks
 
