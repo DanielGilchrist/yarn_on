@@ -8,7 +8,8 @@
   "scripts": {
     "heroku-postbuild": "npm run build",
     "build": "npx vite build",
-    "watch": "npx vite build --watch"
+    "watch": "npx vite build --watch",
+    "production": "npm run build && crystal build src/start_server.cr -o bin/server --release --stats && LUCKY_ENV=production ./bin/server"
   },
   "devDependencies": {
     "@babel/compat-data": "^7.23.5",
