@@ -1,11 +1,12 @@
 class Comments::List < BaseComponent
   needs current_user : User
+  needs post : Post
   needs comments : CommentQuery
 
   def render
     div id: "comments-list" do
       if comments.empty?
-        div class: "text-gray-400 italic" do
+        div class: "text-gray-400 italic py-4" do
           para "No comments yet. Be the first to share your thoughts!"
         end
       else
@@ -17,34 +18,51 @@ class Comments::List < BaseComponent
   end
 
   private def render_comment(comment)
-    div id: "comment-#{comment.id}", class: "mb-4 p-4 bg-gray-700 rounded-lg" do
-      div class: "flex justify-between items-start" do
-        div class: "font-medium text-gray-300" do
-          text comment.author_name
-        end
-
+    div id: "comment-#{comment.id}", class: "mb-6 rounded-lg overflow-hidden transition-all duration-200 border border-gray-700 hover:border-gray-600" do
+      div class: "flex justify-between items-center p-3 bg-gray-800" do
         div class: "flex items-center" do
-          div class: "text-xs text-gray-500 mr-2" do
-            text comment.created_at.to_s("%b %d, %Y")
+          div class: "w-8 h-8 rounded-full bg-indigo-600 flex items-center justify-center text-white font-semibold mr-3" do
+            text comment.author.text_for_icon
           end
 
-          if current_user.try(&.id) == comment.author_id
-            button type: "button",
-              class: "px-2 py-1 bg-red-700 hover:bg-red-600 text-white font-medium rounded-md transition-colors duration-200 text-xs flex items-center",
-              hx_delete: Posts::Comments::Delete.with(comment.post_id, comment.id).path,
-              hx_swap: "outerHTML",
-              hx_target: "#comment-#{comment.id}",
-              hx_confirm: "Are you sure you want to delete this comment?" do
-                span class: "material-icons text-sm" do
-                  text "delete"
+          div do
+            div class: "font-medium text-gray-200 flex items-center" do
+              text comment.author_name
+              if comment.author_id == post.author_id
+                span class: "ml-2 px-2 py-0.5 text-xs bg-indigo-600 text-white rounded-full" do
+                  text "Author"
                 end
               end
+            end
+
+            # Timestamp
+            div class: "text-xs text-gray-400 mt-0.5" do
+              text comment.created_at.to_s("%b %d, %Y")
+            end
           end
+        end
+
+        # Actions
+        if current_user.id == comment.author_id
+          button type: "button",
+            class: "p-1.5 rounded-md hover:bg-gray-700 text-gray-400 hover:text-red-400 transition-colors duration-200",
+            title: "Delete comment",
+            hx_delete: Posts::Comments::Delete.with(comment.post_id, comment.id).path,
+            hx_swap: "outerHTML",
+            hx_target: "#comment-#{comment.id}",
+            hx_confirm: "Are you sure you want to delete this comment?" do
+              span class: "material-icons text-sm" do
+                text "delete"
+              end
+            end
         end
       end
 
-      div class: "mt-2 text-gray-300" do
-        render_markdown(comment.content)
+      # Comment content
+      div class: "p-4 bg-gray-750 border-t border-gray-700" do
+        div class: "prose prose-sm prose-invert max-w-none" do
+          render_markdown(comment.content)
+        end
       end
     end
   end
