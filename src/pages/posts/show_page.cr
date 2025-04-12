@@ -14,9 +14,7 @@ class Posts::ShowPage < MainLayout
         h1 post.title.to_s, class: "text-3xl font-bold text-gray-100 mb-4"
 
         div class: "flex items-center mb-6" do
-          div class: "w-10 h-10 rounded-full bg-indigo-600 flex items-center justify-center text-white font-bold mr-3" do
-            text post.author.text_for_icon
-          end
+          mount Users::Icon, user: post.author
 
           div class: "text-gray-300" do
             div class: "font-medium" do

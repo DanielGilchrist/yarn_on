@@ -2,9 +2,7 @@ class Me::ShowPage < MainLayout
   def content
     div class: "p-6 md:p-8" do
       div class: "flex items-center mb-8" do
-        div class: "bg-indigo-600 text-white p-4 rounded-full mr-4 text-xl font-bold" do
-          text @current_user.text_for_icon
-        end
+        mount_instance Users::Icon.new(user: current_user, size: :large)
 
         div do
           h1 "Your Profile", class: "text-2xl font-bold text-gray-100"
@@ -25,7 +23,7 @@ class Me::ShowPage < MainLayout
           end
 
           div class: "text-gray-300" do
-            text @current_user.email
+            text current_user.email
           end
         end
 

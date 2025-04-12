@@ -21,9 +21,7 @@ class Comments::List < BaseComponent
     div id: "comment-#{comment.id}", class: "mb-6 rounded-lg overflow-hidden transition-all duration-200 border border-gray-700 hover:border-gray-600" do
       div class: "flex justify-between items-center p-3 bg-gray-800" do
         div class: "flex items-center" do
-          div class: "w-8 h-8 rounded-full bg-indigo-600 flex items-center justify-center text-white font-semibold mr-3" do
-            text comment.author.text_for_icon
-          end
+          mount_instance Users::Icon.new(user: comment.author, size: :small)
 
           div do
             div class: "font-medium text-gray-200 flex items-center" do

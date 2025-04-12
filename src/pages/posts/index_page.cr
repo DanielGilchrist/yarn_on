@@ -30,9 +30,7 @@ class Posts::IndexPage < MainLayout
       link to: Posts::Show.with(post), class: "block p-6" do
         div class: "flex justify-between items-center text-sm text-gray-400 mb-2" do
           div class: "flex items-center" do
-            span class: "w-6 h-6 rounded-full bg-indigo-600 flex items-center justify-center text-white text-xs mr-2" do
-              text post.author.text_for_icon
-            end
+            mount_instance Users::Icon.new(user: post.author, size: :small)
 
             span post.author.full_name
           end
