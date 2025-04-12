@@ -3,6 +3,6 @@ class Posts::Comments::List < BrowserAction
     post = PostQuery.new.find(post_id)
     comments = CommentQuery.new.for_list(post)
 
-    component ::Comments::List, comments: comments
+    component ::Comments::List, current_user: current_user, comments: comments
   end
 end

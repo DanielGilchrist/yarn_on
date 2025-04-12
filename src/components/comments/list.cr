@@ -1,4 +1,5 @@
 class Comments::List < BaseComponent
+  needs current_user : User
   needs comments : CommentQuery
 
   def render
@@ -16,14 +17,27 @@ class Comments::List < BaseComponent
   end
 
   private def render_comment(comment)
-    div class: "mb-4 p-4 bg-gray-700 rounded-lg" do
+    div id: "comment-#{comment.id}", class: "mb-4 p-4 bg-gray-700 rounded-lg" do
       div class: "flex justify-between items-start" do
         div class: "font-medium text-gray-300" do
           text comment.author_name
         end
 
-        div class: "text-xs text-gray-500" do
-          text comment.created_at.to_s("%b %d, %Y")
+        div class: "flex items-center" do
+          div class: "text-xs text-gray-500 mr-2" do
+            text comment.created_at.to_s("%b %d, %Y")
+          end
+
+          if current_user.try(&.id) == comment.author_id
+            button type: "button",
+              class: "text-xs text-red-400 hover:text-red-300",
+              hx_delete: Posts::Comments::Delete.with(comment.post_id, comment.id).path,
+              hx_swap: "outerHTML",
+              hx_target: "#comment-#{comment.id}",
+              hx_confirm: "Delete this comment?" do
+                text "Delete"
+              end
+          end
         end
       end
 
