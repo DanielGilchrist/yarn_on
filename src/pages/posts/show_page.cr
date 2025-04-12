@@ -61,17 +61,17 @@ class Posts::ShowPage < MainLayout
           hx_target: "#comments-list",
           hx_swap: "outerHTML",
           hx_on__after_request: "if(event.detail.successful) { this.reset(); }" do
-            div class: "mb-4" do
-              textarea name: "comment:content",
-                placeholder: "Share your thoughts...",
-                class: "w-full p-3 bg-gray-700 text-gray-100 rounded border border-gray-600 focus:border-blue-500 focus:outline-none"
-            end
-            div class: "flex justify-end" do
-              button type: "submit", class: "px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition" do
-                text "Post Comment"
-              end
+          div class: "mb-4" do
+            textarea name: "comment:content",
+              placeholder: "Share your thoughts...",
+              class: "w-full p-3 bg-gray-700 text-gray-100 rounded border border-gray-600 focus:border-blue-500 focus:outline-none"
+          end
+          div class: "flex justify-end" do
+            button type: "submit", class: "px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition" do
+              text "Post Comment"
             end
           end
+        end
       end
     end
   end
