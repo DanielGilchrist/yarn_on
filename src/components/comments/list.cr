@@ -64,7 +64,7 @@ class Comments::List < BaseComponent
   end
 
   private def comment_classes(comment : Comment) : String
-    comment_classes = "mb-6 overflow-hidden transition-all duration-200 hover:shadow-md"
+    comment_classes = "mb-6 rounded-lg overflow-hidden transition-all duration-200 border border-gray-700 hover:border-gray-600"
     comment_classes += " comment-new" if newest_comment_id == comment.id
 
     comment_classes
