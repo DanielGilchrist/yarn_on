@@ -34,7 +34,7 @@ class Comments::List < BaseComponent
             end
 
             div class: "text-xs text-gray-400 mt-0.5" do
-              text comment.created_at.to_s("%b %d, %Y")
+              text comment.pretty_created_at
             end
           end
         end
