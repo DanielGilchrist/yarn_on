@@ -35,14 +35,12 @@ class Comments::List < BaseComponent
               end
             end
 
-            # Timestamp
             div class: "text-xs text-gray-400 mt-0.5" do
               text comment.created_at.to_s("%b %d, %Y")
             end
           end
         end
 
-        # Actions
         if current_user.id == comment.author_id
           button type: "button",
             class: "p-1.5 rounded-md hover:bg-gray-700 text-gray-400 hover:text-red-400 transition-colors duration-200",
@@ -58,7 +56,6 @@ class Comments::List < BaseComponent
         end
       end
 
-      # Comment content
       div class: "p-4 bg-gray-750 border-t border-gray-700" do
         div class: "prose prose-sm prose-invert max-w-none" do
           render_markdown(comment.content)
