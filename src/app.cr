@@ -3,6 +3,7 @@ require "./shards"
 # Load the asset manifest
 LuckyVite::AssetHelpers.load_manifest
 
+require "./markdown"
 require "../config/server"
 require "./app_database"
 require "../config/**"

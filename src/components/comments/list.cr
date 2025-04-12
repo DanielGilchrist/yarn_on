@@ -44,7 +44,7 @@ class Comments::List < BaseComponent
       end
 
       div class: "mt-2 text-gray-300" do
-        para comment.content
+        render_markdown(comment.content)
       end
     end
   end

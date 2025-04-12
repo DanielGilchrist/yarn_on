@@ -1,5 +1,6 @@
 abstract class MainLayout
   include Lucky::HTMLPage
+  include Markdown
 
   needs current_user : User
 
@@ -24,12 +25,6 @@ abstract class MainLayout
           end
         end
       end
-    end
-  end
-
-  private def render_markdown(text : String)
-    div class: "markdown-content" do
-      raw Markd.to_html(text, Markd::Options.new(smart: true, safe: true))
     end
   end
 
