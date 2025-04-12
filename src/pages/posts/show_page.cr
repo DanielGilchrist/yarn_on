@@ -60,7 +60,8 @@ class Posts::ShowPage < MainLayout
           hx_post: Posts::Comments::Create.with(post.id).path,
           hx_target: "#comments-list",
           hx_swap: "outerHTML",
-          hx_on__after_request: "if(event.detail.successful) { this.reset(); }" do
+          hx_on__after_request: "if(event.detail.successful) { this.reset(); }",
+          hx_swap_oob: "true" do
           div class: "mb-4" do
             textarea name: "comment:content",
               placeholder: "Share your thoughts...",

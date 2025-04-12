@@ -2,6 +2,7 @@ class Comments::List < BaseComponent
   needs current_user : User
   needs post : Post
   needs comments : CommentQuery
+  needs newest_comment_id : Int64? = nil
 
   def render
     div id: "comments-list" do
@@ -18,7 +19,7 @@ class Comments::List < BaseComponent
   end
 
   private def render_comment(comment)
-    div id: "comment-#{comment.id}", class: "mb-6 rounded-lg overflow-hidden transition-all duration-200 border border-gray-700 hover:border-gray-600" do
+    div id: "comment-#{comment.id}", class: comment_classes(comment) do
       div class: "flex justify-between items-center p-3 bg-gray-800" do
         div class: "flex items-center" do
           mount_instance Users::Icon.new(user: comment.author, size: :small)
@@ -60,5 +61,12 @@ class Comments::List < BaseComponent
         end
       end
     end
+  end
+
+  private def comment_classes(comment : Comment) : String
+    comment_classes = "mb-6 overflow-hidden transition-all duration-200 hover:shadow-md"
+    comment_classes += " comment-new" if newest_comment_id == comment.id
+
+    comment_classes
   end
 end
