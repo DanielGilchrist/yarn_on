@@ -12,4 +12,3 @@ class Posts::Comments::Delete < BrowserAction
     end
   end
 end
-

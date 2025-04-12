@@ -47,10 +47,10 @@ class Comments::List < BaseComponent
             hx_swap: "outerHTML",
             hx_target: "#comment-#{comment.id}",
             hx_confirm: "Are you sure you want to delete this comment?" do
-              span class: "material-icons text-sm" do
-                text "delete"
-              end
+            span class: "material-icons text-sm" do
+              text "delete"
             end
+          end
         end
       end
 
