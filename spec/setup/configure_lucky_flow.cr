@@ -11,6 +11,8 @@ LuckyFlow.configure do |settings|
   # settings.driver_path = "/path/to/specific/chromedriver"
 end
 
+LuckyFlow.default_driver = "headless_firefox"
+
 # By default, LuckyFlow is set in "headless" mode (no browser window shown).
 # Uncomment this to enable running `LuckyFlow` in a Google Chrome window instead.
 # Be sure to disable for CI.
