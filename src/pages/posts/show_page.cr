@@ -45,12 +45,27 @@ class Posts::ShowPage < MainLayout
 
       div class: "mt-12 bg-gray-800 rounded-lg shadow-md p-6 border border-gray-700" do
         h3 "Comments", class: "text-xl font-semibold text-gray-100 mb-4"
-        div class: "text-gray-400 italic" do
-          para "No comments yet. Be the first to share your thoughts!"
+
+        div id: "comments-list", hx_get: Posts::Comments::List.with(post.id).path, hx_trigger: "load" do
+          div class: "text-gray-400 italic" do
+            para "Loading comments..."
+          end
         end
 
         div class: "mt-6 pt-6 border-t border-gray-700" do
-          # TODO
+          form id: "comment-form", hx_post: Posts::Comments::Create.with(post.id).path, hx_target: "#comments-list", hx_swap: "outerHTML" do
+            csrf_hidden_input
+
+            div class: "mb-4" do
+              textarea name: "comment:content", placeholder: "Share your thoughts...", class: "w-full p-3 bg-gray-700 text-gray-100 rounded border border-gray-600 focus:border-blue-500 focus:outline-none"
+            end
+
+            div class: "flex justify-end" do
+              button type: "submit", class: "px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition" do
+                text "Post Comment"
+              end
+            end
+          end
         end
       end
     end
