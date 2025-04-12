@@ -4,6 +4,7 @@
   "dependencies": {
     "@rails/ujs": "^7.1.0",
     "htmx.org": "^2.0.0",
+    "material-icons": "^1.13.14",
     "modern-normalize": "^2.0.0"
   },
   "scripts": {

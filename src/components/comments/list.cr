@@ -30,12 +30,14 @@ class Comments::List < BaseComponent
 
           if current_user.try(&.id) == comment.author_id
             button type: "button",
-              class: "text-xs text-red-400 hover:text-red-300",
+              class: "px-2 py-1 bg-red-700 hover:bg-red-600 text-white font-medium rounded-md transition-colors duration-200 text-xs flex items-center",
               hx_delete: Posts::Comments::Delete.with(comment.post_id, comment.id).path,
               hx_swap: "outerHTML",
               hx_target: "#comment-#{comment.id}",
-              hx_confirm: "Delete this comment?" do
-                text "Delete"
+              hx_confirm: "Are you sure you want to delete this comment?" do
+                span class: "material-icons text-sm" do
+                  text "delete"
+                end
               end
           end
         end

@@ -1,5 +1,6 @@
 // Add this line to the beginning of every entry script
 import "vite/modulepreload-polyfill"
+import "material-icons/iconfont/material-icons.css";
 
 import "@css/tailwind.css";
 import "@css/main.css"
