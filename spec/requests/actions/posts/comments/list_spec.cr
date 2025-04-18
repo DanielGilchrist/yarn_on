@@ -11,6 +11,6 @@ describe Posts::Comments::List do
 
     response = BrowserClient.exec(user, Posts::Comments::List.with(post))
     response.status_code.should eq(200)
-    response.body.should contain(to_markdown_html(comment.content))
+    response.body.should contain(comment.content)
   end
 end

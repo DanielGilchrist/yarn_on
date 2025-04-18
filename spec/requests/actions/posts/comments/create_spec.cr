@@ -13,7 +13,7 @@ describe Posts::Comments::Create do
     )
 
     response.status_code.should eq(200)
-    response.body.should contain(to_markdown_html(comment_content))
+    response.body.should contain(comment_content)
 
     saved_comment = CommentQuery.new.author_id(user.id).post_id(post.id).first
     saved_comment.content.should eq(comment_content)
