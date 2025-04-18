@@ -24,3 +24,7 @@ include LuckyFlow::Expectations
 Avram::Migrator::Runner.new.ensure_migrated!
 Avram::SchemaEnforcer.ensure_correct_column_mappings!
 Habitat.raise_if_missing_settings!
+
+def to_markdown_html(text)
+  Markd.to_html(text, Markd::Options.new(smart: true, safe: true))
+end
