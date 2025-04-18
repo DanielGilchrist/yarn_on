@@ -9,7 +9,7 @@ describe Posts::Comments::Create do
     response = BrowserClient.exec(
       user,
       Posts::Comments::Create.with(post),
-      comment: { content: comment_content }
+      comment: {content: comment_content}
     )
 
     response.status_code.should eq(200)
@@ -26,7 +26,7 @@ describe Posts::Comments::Create do
     response = BrowserClient.exec(
       user,
       Posts::Comments::Create.with(post),
-      comment: { content: "" }
+      comment: {content: ""}
     )
 
     response.status_code.should eq(200)

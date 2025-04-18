@@ -18,8 +18,7 @@ class BrowserClient < Lucky::BaseHTTPClient
     uri.query_params = query_params
 
     new
-      .headers("Content-Type": "text/html")
-      .@client
+      .headers("Content-Type": "text/html").@client
       .exec(method: route_helper.method.to_s.upcase, path: uri.to_s, body: body)
   end
 
