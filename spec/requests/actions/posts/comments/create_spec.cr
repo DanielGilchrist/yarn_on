@@ -31,6 +31,24 @@ describe Posts::Comments::Create do
 
     response.status_code.should eq(200)
     response.body.should contain("No comments yet.")
+    response.body.should contain("content must have at least 1 characters")
+
+    CommentQuery.new.author_id(user.id).post_id(post.id).select_count.should eq(0)
+  end
+
+  it "doesn't create a comment with too many characters" do
+    user = UserFactory.create
+    post = PostFactory.create
+
+    response = BrowserClient.exec(
+      user,
+      Posts::Comments::Create.with(post),
+      comment: {content: "a" * 5000}
+    )
+
+    response.status_code.should eq(200)
+    response.body.should contain("No comments yet.")
+    response.body.should contain("content must not have more than")
 
     CommentQuery.new.author_id(user.id).post_id(post.id).select_count.should eq(0)
   end
