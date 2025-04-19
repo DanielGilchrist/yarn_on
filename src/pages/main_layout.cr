@@ -1,5 +1,6 @@
 abstract class MainLayout
   include Lucky::HTMLPage
+  include Markdown
 
   needs current_user : User
 
@@ -11,7 +12,7 @@ abstract class MainLayout
 
   def render
     html_doctype
-    html lang: "en" do
+    html lang: "en", hx_headers: "{\"X-CSRF-TOKEN\": \"#{Lucky::ProtectFromForgery.get_token(context)}\"}" do
       mount Shared::LayoutHead, page_title: page_title
 
       body class: "bg-gray-900 min-h-screen text-gray-100" do
@@ -24,12 +25,6 @@ abstract class MainLayout
           end
         end
       end
-    end
-  end
-
-  private def render_markdown(text : String)
-    div class: "markdown-content" do
-      raw Markd.to_html(text, Markd::Options.new(smart: true, safe: true))
     end
   end
 

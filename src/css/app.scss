@@ -13,3 +13,24 @@
 
 @import "modern-normalize/modern-normalize.css";
 
+.comment-new {
+  animation: comment-fade-in 0.5s ease-out forwards;
+}
+
+@keyframes comment-fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+    background-color: rgba(79, 70, 229, 0.2);
+  }
+
+  70% {
+    background-color: rgba(79, 70, 229, 0.2);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    background-color: transparent;
+  }
+}

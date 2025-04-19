@@ -7,6 +7,7 @@ class Shared::LayoutHead < BaseComponent
       title page_title
 
       vite_entry_tags "main.js", defer: "true"
+      css_link href: "https://fonts.googleapis.com/icon?family=Material+Icons"
 
       csrf_meta_tags
       responsive_meta_tag
